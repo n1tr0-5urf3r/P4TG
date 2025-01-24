@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: fihle/open-p4studio:9.13.4
+      env:
+        SDE: /open-p4studio
+        SDE_INSTALL: /open-p4studio/install
 
     steps:
       - uses: actions/checkout@v3
