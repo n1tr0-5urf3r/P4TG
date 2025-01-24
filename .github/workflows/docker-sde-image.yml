@@ -9,17 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: fihle/open-p4studio:9.13.4
 
     steps:
       - uses: actions/checkout@v3
       - name: Tofino1 CI
-        container:
-          image: fihle/open-p4studio:9.13.4
-        run: |
-          cd P4-Implementation && make compile TARGET=tofino
+        run: cd P4-Implementation && make compile TARGET=tofino
 
       - name: Tofino2 CI
-        container:
-          image: fihle/open-p4studio:9.13.4
-        run: |
-          cd P4-Implementation && make compile TARGET=tofino2
+        run: cd P4-Implementation && make compile TARGET=tofino2
