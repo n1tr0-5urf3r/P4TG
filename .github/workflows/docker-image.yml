@@ -12,5 +12,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Build frontend
+    - run: cd Configuration\ GUI && npm run build && cp -rf build/* ../Controller/gui_build/
+    
     - name: Controller CI
       run: cd Controller && docker build .
