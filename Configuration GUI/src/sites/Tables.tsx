@@ -120,7 +120,7 @@ const Tables = () => {
     useEffect(() => {
         refresh()
 
-    }, [])
+    }, [refresh])
 
     return <Loader loaded={loaded}>
         <Tabs
