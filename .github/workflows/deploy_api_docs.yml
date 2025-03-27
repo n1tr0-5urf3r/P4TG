@@ -1,0 +1,38 @@
+name: Deploy P4TG API Docs
+
+on:
+  push:
+    branches: [ main, srv6 ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Run Controller to generate OpenAPI JSON
+        run: cd P4TG/Controller && cargo run || exit 0
+
+      - name: Move openapi.json into place
+        run: mv openapi.json ../../
+
+      - name: Clone swagger UI
+        run: cd ../../ && git clone https://github.com/swagger-api/swagger-ui.git
+
+      - name: Move swagger UI into place
+        run: mv swagger-ui/dist . && rm -rf swagger-ui && mv dist/index.html .
+
+      - name: Replace dynamic Swagger UI URL
+        run: |
+            sed -ie 's/url:.*$/url: "\.\/openapi\.json",/' dist/swagger-initializer.js
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
