@@ -19,13 +19,13 @@ jobs:
         run: cd Controller && cargo run || exit 0
 
       - name: Move openapi.json into place
-        run: mv Controller/openapi.json ../
+        run: mv Controller/openapi.json . && pwd && ls -lha
 
       - name: Clone swagger UI
-        run: cd && git clone https://github.com/swagger-api/swagger-ui.git
+        run: git clone https://github.com/swagger-api/swagger-ui.git
 
       - name: Move swagger UI into place
-        run: cd && mv swagger-ui/dist . && rm -rf swagger-ui && mv dist/index.html .
+        run: mv swagger-ui/dist . && rm -rf swagger-ui && mv dist/index.html .
 
       - name: Replace dynamic Swagger UI URL
         run: |
