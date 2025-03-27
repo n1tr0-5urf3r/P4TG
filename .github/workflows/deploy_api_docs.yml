@@ -18,21 +18,28 @@ jobs:
       - name: Run Controller to generate OpenAPI JSON
         run: cd Controller && cargo run || exit 0
 
+      - name: Create doc folder
+        run: mkdir doc
+
       - name: Move openapi.json into place
-        run: mv Controller/openapi.json . && pwd && ls -lha
+        run: mv Controller/openapi.json doc/openapi.json
 
       - name: Clone swagger UI
         run: git clone https://github.com/swagger-api/swagger-ui.git
 
       - name: Move swagger UI into place
-        run: mv swagger-ui/dist . && rm -rf swagger-ui && mv dist/index.html .
+        run: mv swagger-ui/dist doc/dist/ && mv doc/dist/index.html doc/index.html
 
       - name: Replace dynamic Swagger UI URL
         run: |
-            sed -ie 's/url:.*$/url: "\.\/openapi\.json",/' dist/swagger-initializer.js
+            sed -ie 's/url:.*$/url: "\.\/openapi\.json",/' doc/dist/swagger-initializer.js
+
+      - name: Fix Swagger UI Paths
+        run: |
+            sed -ie 's/href="\./href=".\/dist/g' doc/index.html && sed -ie 's/src="\./src=".\/dist/g' doc/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: doc
