@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite one or more of the following papers."
+
+references:
+  - type: article
+    authors:
+      - family-names: "Lindner"
+        given-names: "Steffen"
+      - family-names: "Häberle"
+        given-names: "Marco"
+      - family-names: "Menth"
+        given-names: "Michael"
+    title: "P4TG: 1 Tb/s Traffic Generation for Ethernet/IP Networks"
+    journal: "IEEE Access"
+    year: 2023
+    month: 2
+    volume: 11
+    start: 17525
+    end: 17535
+
+  - type: article
+    authors:
+      - family-names: "Ihle"
+        given-names: "Fabian"
+      - family-names: "Zink"
+        given-names: "Etienne"
+      - family-names: "Lindner"
+        given-names: "Steffen"
+      - family-names: "Menth"
+        given-names: "Michael"
+    title: "Enhancements to P4TG: Protocols, Performance, and Automation"
+    journal: "KuVS Workshop on Network Softwarization (KuVS NetSoft)"
+    year: 2025
+    month: 4
+
+  - type: article
+    authors:
+      - family-names: "Ihle"
+        given-names: "Fabian"
+      - family-names: "Zink"
+        given-names: "Etienne"
+      - family-names: "Menth"
+        given-names: "Michael"
+    title: "Enhancements to P4TG: Histogram-Based RTT Monitoring in the Data Plane"
+    journal: "Workshop on Resilient Networks and Systems (ReNeSys)"
+    year: 2025
+    month: 9
