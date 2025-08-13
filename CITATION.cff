@@ -1,47 +1,31 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
 cff-version: 1.2.0
-message: "If you use this repository, please cite one or more of the following papers."
-
-references:
-  - type: article
-    authors:
-      - family-names: "Lindner"
-        given-names: "Steffen"
-      - family-names: "Häberle"
-        given-names: "Marco"
-      - family-names: "Menth"
-        given-names: "Michael"
-    title: "P4TG: 1 Tb/s Traffic Generation for Ethernet/IP Networks"
-    journal: "IEEE Access"
-    year: 2023
-    month: 2
-    volume: 11
-    start: 17525
-    end: 17535
-
-  - type: article
-    authors:
-      - family-names: "Ihle"
-        given-names: "Fabian"
-      - family-names: "Zink"
-        given-names: "Etienne"
-      - family-names: "Lindner"
-        given-names: "Steffen"
-      - family-names: "Menth"
-        given-names: "Michael"
-    title: "Enhancements to P4TG: Protocols, Performance, and Automation"
-    journal: "KuVS Workshop on Network Softwarization (KuVS NetSoft)"
-    year: 2025
-    month: 4
-
-  - type: article
-    authors:
-      - family-names: "Ihle"
-        given-names: "Fabian"
-      - family-names: "Zink"
-        given-names: "Etienne"
-      - family-names: "Menth"
-        given-names: "Michael"
-    title: "Enhancements to P4TG: Histogram-Based RTT Monitoring in the Data Plane"
-    journal: "Workshop on Resilient Networks and Systems (ReNeSys)"
-    year: 2025
-    month: 9
+title: P4TG
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Fabian
+    family-names: Ihle
+    email: fabian.ihle@uni-tuebingen.de
+    affiliation: University of Tübingen
+  - given-names: Steffen
+    family-names: Lindner
+    email: steffen.lindner@uni-tuebingen.de
+    affiliation: University of Tübingen
+identifiers:
+  - type: doi
+    value: 10.1109/ACCESS.2023.3246262
+    description: >-
+      P4TG: 1 Tb/s Traffic Generation for Ethernet/IP
+      Networks
+  - type: doi
+    value: 10.15496/publikation-105106
+    description: >-
+      Enhancements to P4TG: Protocols, Performance, and
+      Automation
+repository-code: 'https://github.com/uni-tue-kn/P4TG'
+license: CC-BY-4.0
