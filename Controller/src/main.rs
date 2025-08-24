@@ -16,7 +16,7 @@
 /*
  * Steffen Lindner (steffen.lindner@uni-tuebingen.de)
  */
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::env;
 use std::fs::File;
 use std::str::FromStr;
@@ -118,9 +118,10 @@ async fn configure_ports(switch: &mut SwitchConnection, pm: &PortManager, config
         used_recirculation_ports.push(port.rx_recirculation);
     }
 
-    used_recirculation_ports.dedup();
+    // collect unique ports and ensure each tg port uses two distinct recirculation ports
+    let unique_ports: HashSet<u32> = used_recirculation_ports.iter().cloned().collect();
 
-    if used_recirculation_ports.len() != tg_ports.len() * 2 {
+    if unique_ports.len() != tg_ports.len() * 2 {
         panic!("Recirculation ports not unique.")
     }
 
